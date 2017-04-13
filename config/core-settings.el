@@ -7,3 +7,6 @@
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
+
+;; y,n in place of yes or no
+(fset 'yes-or-no-p 'y-or-n-p) 

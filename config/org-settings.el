@@ -21,8 +21,7 @@
 
 
   (setq org-agenda-files (list "~/Dropbox/everythingme/gcal.org"
-                               "~/Dropbox/everythingme/i.org"
-                               "~/Dropbox/everythingme/schedule.org"))
+                               "~/Dropbox/everythingme/i.org"))
 
 
   (setq org-capture-templates
@@ -63,4 +62,14 @@
            (delete-other-windows)
            (noflet ((switch-to-buffer-other-window (buf) (switch-to-buffer buf)))
              (org-capture)))
+
+
+;; gcal synchronization
+(use-package org-gcal
+  :ensure t
+  :config
+  (load "~/.secret/.gcal.el")
+  (org-gcal-fetch)
+  (org-gcal-sync))
+
 

@@ -26,7 +26,11 @@
 (use-package smartparens
   :ensure t
   :config
-  (require 'smartparens-config))
+  (require 'smartparens-config)
+  (smartparens-global-mode 1)
+  ;; use parantheses highlight mode
+  (show-paren-mode 1)
+  )
 
 ;; use which key
 (use-package which-key
