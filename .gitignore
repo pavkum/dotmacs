@@ -1,5 +1,7 @@
 org-gcal/**
 elpa/**
-projectile*
+.projectile*
+projectile.cache
+projectile-bookmarks.eld
 recentf*
 auto-save-list/**
