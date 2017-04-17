@@ -28,7 +28,7 @@
   :ensure t
   :config
   (require 'spaceline-config)
-  (setq powerline-default-separator 'wave
+  (setq powerline-default-separator 'slant
 	spaceline-workspace-numbers-unicode t
 	spaceline-separator-dir-left '(left . left)
 	spaceline-separator-dir-right '(right . right)

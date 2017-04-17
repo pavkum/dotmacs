@@ -11,7 +11,9 @@
 (use-package anzu
   :ensure t
   :config
-  (global-anzu-mode))
+  (global-anzu-mode)
+  (global-set-key [remap query-replace] 'anzu-query-replace)
+  (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp))
 
 (use-package beacon
   :ensure t
