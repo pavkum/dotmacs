@@ -46,4 +46,8 @@
   :config
   (global-company-mode))
 
+;; json mode
+(use-package json-mode
+  :ensure t)
+
 (message "%s" "loaded utils.")

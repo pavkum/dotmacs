@@ -31,12 +31,11 @@
            "* Note %?\n%T")
            ("l" "Link" entry (file+headline "~/Dropbox/everythingme/links.org" "Links")
            "* %? %^L %^g \n%T" :prepend t)
-          ("b" "Blog idea" entry (file+headline "~/Dropbox/everythingme/i.org" "Blog Topics")
-           "* %?\n%T" :prepend t)
           ("t" "To Do Item" entry (file+headline "~/Dropbox/everythingme/i.org" "To Do Items")
            "* %?\n%T" :prepend t)
-
-          ("j" "Journal" entry (file+datetree "~/Dropbox/journal.org")
+	  ("d" "Day to day tasks" checkitem (file+datetree "~/Dropbox/everythingme/day-to-day.org")
+	   "[ ] %i%? \n%U")
+          ("j" "Journal" entry (file+datetree "~/Dropbox/everythingme/journal.org")
            "* %?\nEntered on %U\n  %i\n  %a")))
 
 
