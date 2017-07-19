@@ -1,13 +1,19 @@
 (use-package projectile
   :ensure t
   :config
-  (projectile-mode 1))
+  (projectile-mode 1)
+  (setq projectile-completion-system 'ivy))
 
-(use-package helm-projectile
+;;(use-package helm-projectile
+;;  :ensure t
+;;  :config
+;;  (require 'projectile)
+;;  (setq projectile-completion-system 'helm)
+;;  (helm-projectile-on))
+
+(use-package counsel-projectile
   :ensure t
   :config
-  (require 'projectile)
-  (setq projectile-completion-system 'helm)
-  (helm-projectile-on))
+  (counsel-projectile-on))
 
 (message "%s" "loaded projectile.")

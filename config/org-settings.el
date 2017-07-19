@@ -33,8 +33,8 @@
            "* %? %^L %^g \n%T" :prepend t)
           ("t" "To Do Item" entry (file+headline "~/Dropbox/everythingme/i.org" "To Do Items")
            "* %?\n%T" :prepend t)
-	  ("d" "Day to day tasks" checkitem (file+datetree "~/Dropbox/everythingme/day-to-day.org")
-	   "[ ] %i%? \n%U")
+	  ("d" "Day to day tasks" entry (file+datetree "~/Dropbox/everythingme/day-to-day.org")
+	   "**** TODO %i%? \n%U")
           ("j" "Journal" entry (file+datetree "~/Dropbox/everythingme/journal.org")
            "* %?\nEntered on %U\n  %i\n  %a")))
 
