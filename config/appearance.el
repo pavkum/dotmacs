@@ -81,4 +81,14 @@
 ;; (require 'helm)
  ;;(spaceline-helm-mode))
 
+(use-package paredit
+  :ensure t
+  :config
+  (paredit-mode 1))
+
+(use-package rainbow-delimiters
+  :ensure t
+  :config
+  (rainbow-delimiters-mode 1))
+
 (message "%s" "applied appearance tweaks.")
