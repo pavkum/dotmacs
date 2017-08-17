@@ -10,3 +10,6 @@
 
 ;; y,n in place of yes or no
 (fset 'yes-or-no-p 'y-or-n-p) 
+
+;; refresh buffer
+(global-set-key (kbd "<f5>") 'revert-buffer)

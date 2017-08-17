@@ -17,8 +17,8 @@
 
 ;; load all my config files
 (load "~/.emacs.d/config/core-settings")
-;;(load "~/.emacs.d/config/helm-settings")
-(load "~/.emacs.d/config/ivy-settings")
+(load "~/.emacs.d/config/helm-settings")
+;;(load "~/.emacs.d/config/ivy-settings")
 (load "~/.emacs.d/config/projectile-settings")
 (load "~/.emacs.d/config/perspective-settings")
 (load "~/.emacs.d/config/appearance")

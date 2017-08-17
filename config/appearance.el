@@ -26,7 +26,7 @@
 (use-package doom-themes
   :ensure t
   :config
-  (load-theme 'doom-molokai t)
+  (load-theme 'monokai t)
    (setq monokai-height-minus-1 0.8
         monokai-height-plus-1 1.1
         monokai-height-plus-2 1.15
@@ -68,7 +68,11 @@
  (spaceline-toggle-major-mode-on)
  (spaceline-toggle-minor-modes-off)
  (spaceline-toggle-auto-compile-on)
- (spaceline-emacs-theme))
+ (spaceline-emacs-theme)
+
+ (require 'helm)
+ (spaceline-helm-mode))
+
 
 ;; apply proper color selected face of perspective
 (custom-set-faces
@@ -78,17 +82,15 @@
 (set-face-background 'vertical-border "#3f444a")
 (set-face-foreground 'vertical-border (face-background 'vertical-border))
 
-;; (require 'helm)
- ;;(spaceline-helm-mode))
 
 (use-package paredit
   :ensure t
   :config
-  (paredit-mode 1))
+  (add-hook 'clojure-mode-hook 'paredit-mode))
 
 (use-package rainbow-delimiters
   :ensure t
   :config
-  (rainbow-delimiters-mode 1))
+  (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode-enable))
 
 (message "%s" "applied appearance tweaks.")
