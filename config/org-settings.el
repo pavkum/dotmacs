@@ -12,17 +12,39 @@
  '(org-directory "~/Dropbox/personal")
  '(org-default-notes-file (concat org-directory "/notes.org"))
  '(org-todo-keyword-faces
-       '(("TODO" . "#A64E4E")
-	 ("SOMEDAY" . "orange")
-	 ("IN_PROGRESS" . "#2C95FF")
-	 ("DONE" . "#11AE13")
-	 ("CANCELLED" . "#BFCFD9")))
+   '(("TODO" . "#A64E4E")
+     ("SOMEDAY" . "orange")
+     ("IN_PROGRESS" . "#2C95FF")
+     ("DONE" . "#11AE13")
+     ("CANCELLED" . "#BFCFD9")))
+ '(org-tag-alist '
+   ((:startgroup . nil)
+    ;; for classification
+    ("@WORK" . ?w) ("@PERSONAL" . ?p)
+    (:endgroup . nil)
+    ;; for priority
+    (:startgroup . nil)
+    ("@URGENT" . ?u)
+    (:endgroup . nil)
+    ))
  '(org-todo-keywords
    '((sequence "TODO(t)" "SOMEDAY(s)" "IN_PROGRESS(p)"  "|" "DONE(d)" "CANCELLED(c)")))
  '(org-agenda-files (list "~/Dropbox/personal/my-life.org"))
  '(org-capture-templates
-      '(("j" "Journal" entry (file+datetree "~/Dropbox/everythingme/journal.org")
-	 "* %?\nEntered on %U\n  %i\n  %a"))))
+      '(("j" "Journal for today" entry (file+datetree "~/Dropbox/personal/journal.org")
+	 "* %?\n%U\n")
+	("J" "Journal for someday" entry (file+datetree+prompt "~/Dropbox/personal/journal.org")
+	 "* %?\n%U\n")
+	("p" "Add Task for today" entry (file+datetree "~/Dropbox/personal/journal.org")
+	 "* TODO %? \n Link: %a %U \n")
+	("P" "Add Task for someday" entry (file+datetree+prompt "~/Dropbox/personal/journal.org")
+	 "* TODO %? \n %T \n")
+	("l" "Logging for today" entry (file+datetree "~/Dropbox/personal/logging.org")
+	 "* %<%H:%M> %^{Logging}p")
+	("L" "Logging for someday" entry (file+datetree+prompt "~/Dropbox/personal/logging.org")
+	 "* %<%H:%M> %^{Logging}p")
+	("w" "Work task creation" entry (file "~/Dropbox/personal/work.org")
+	 "* TODO %? %^{Releases}p %^{Type}p %^{Jira} %^{Scenario} %^{comment} \n"))))
 
 ;;; org-agenda shortcut
 (global-set-key (kbd "<f6>") 'org-agenda)
