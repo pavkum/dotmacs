@@ -36,7 +36,7 @@
 	("J" "Journal for someday" entry (file+datetree+prompt "~/Dropbox/personal/journal.org")
 	 "* %?\n%U\n")
 	("p" "Add Task for today" entry (file+datetree "~/Dropbox/personal/journal.org")
-	 "* TODO %? \n Link: %a %U \n")
+	 "* TODO %? \n %T \n")
 	("P" "Add Task for someday" entry (file+datetree+prompt "~/Dropbox/personal/journal.org")
 	 "* TODO %? \n %T \n")
 	("l" "Logging for today" entry (file+datetree "~/Dropbox/personal/logging.org")
