@@ -6,4 +6,5 @@
   (key-chord-define-global "<<" 'persp-prev)
   (key-chord-define-global "LL" 'persp-prev)
   (key-chord-define-global "KK" 'persp-kill)
-  (key-chord-define-global "PP" 'persp-switch))
+  (key-chord-define-global "PP" 'persp-switch)
+  (key-chord-define-global "::" 'ace-window))
