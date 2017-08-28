@@ -29,7 +29,7 @@
     ))
  '(org-todo-keywords
    '((sequence "TODO(t)" "SOMEDAY(s)" "IN_PROGRESS(p)"  "|" "DONE(d)" "CANCELLED(c)")))
- '(org-agenda-files (list "~/Dropbox/personal/my-life.org"))
+ '(org-agenda-files '("~/Dropbox/personal"))
  '(org-capture-templates
       '(("j" "Journal for today" entry (file+datetree "~/Dropbox/personal/journal.org")
 	 "* %?\n%U\n")
@@ -43,8 +43,15 @@
 	 "* %<%H:%M> %^{Logging}p")
 	("L" "Logging for someday" entry (file+datetree+prompt "~/Dropbox/personal/logging.org")
 	 "* %<%H:%M> %^{Logging}p")
-	("w" "Work task creation" entry (file "~/Dropbox/personal/work.org")
-	 "* TODO %? %^{Releases}p %^{Type}p %^{Jira} %^{Scenario} %^{comment} \n"))))
+	("w"
+	 "Work task creation"
+	 entry
+	 (file "~/Dropbox/personal/work.org")
+	 "* SOMEDAY %^{Task} %^{TProject}p %^{TRelease}p %^{TType}p %^{TDeadline}p  \n :PROPERTIES:\n :JIRA: %^{Jira|NA} \n :SCENARIO: %^{scenario|NA} \n :COMMENTS: %^{comment|NA} \n :END:"
+	 :empty-lines 1))))
+
+;;; store link
+(global-set-key (kbd "C-c i") 'org-store-link)
 
 ;;; org-agenda shortcut
 (global-set-key (kbd "<f6>") 'org-agenda)
