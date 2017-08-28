@@ -39,10 +39,10 @@
 	 "* TODO %? \n SCHEDULED:%t \n DEADLINE:%t \n")
 	("T" "Add Task for someday" entry (file+datetree+prompt "~/Dropbox/personal/journal.org")
 	 "* TODO %? \n SCHEDULED:%^t \n DEADLINE:%^t \n")
-	("l" "Logging for today" entry (file+datetree "~/Dropbox/personal/logging.org")
-	 "* %<%H:%M> %^{Logging}p")
-	("L" "Logging for someday" entry (file+datetree+prompt "~/Dropbox/personal/logging.org")
-	 "* %<%H:%M> %^{Logging}p")
+	;;("l" "Logging for today" entry (file+datetree "~/Dropbox/personal/logging.org")
+	;; "* %<%H:%M> %^{Logging}p")
+	;;("L" "Logging for someday" entry (file+datetree+prompt "~/Dropbox/personal/logging.org")
+	;; "* %<%H:%M> %^{Logging}p")
 	("w"
 	 "Work task creation"
 	 entry
