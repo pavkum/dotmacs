@@ -1,10 +1,3 @@
-(defun pav/swap-windows ()
-""
-(interactive)
-(require 'ace-window)
-(ace-swap-window)
-(aw-flip-window))
-
 (use-package key-chord
   :ensure t
   :config

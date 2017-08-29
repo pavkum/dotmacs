@@ -32,5 +32,6 @@
 (load "~/.emacs.d/config/key-chord-settings")
 (load "~/.emacs.d/config/typescript")
 (load "~/.emacs.d/config/clojure")
+(load "~/.emacs.d/config/pavan-functions")
 
 ;;; init.el ends here
