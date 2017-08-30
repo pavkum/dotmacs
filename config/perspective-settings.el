@@ -6,9 +6,9 @@
   :config
   (persp-mode))
 
-(use-package persp-projectile
-  :ensure t
-  :config
-  (require 'persp-projectile))
+;; (use-package persp-projectile
+;;   :ensure t
+;;   :config
+;;   (require 'persp-projectile))
 
 (message "%s" "loaded perspective settings.")

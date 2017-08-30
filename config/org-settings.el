@@ -54,7 +54,7 @@
 (global-set-key (kbd "C-c i") 'org-store-link)
 
 ;;; org-agenda shortcut
-(global-set-key (kbd "<f6>") 'org-agenda)
+(global-set-key (kbd "<f6>") 'pav/open-agenda)
 
 ;;; org-capture shortcut
 (global-set-key (kbd "<f7>") 'org-capture)
