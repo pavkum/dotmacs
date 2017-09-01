@@ -33,5 +33,6 @@
 (load "~/.emacs.d/config/typescript")
 (load "~/.emacs.d/config/clojure")
 (load "~/.emacs.d/config/pavan-functions")
+(load "~/.emacs.d/config/hydra-settings.el")
 
 ;;; init.el ends here

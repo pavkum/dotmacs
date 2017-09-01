@@ -50,4 +50,8 @@
 (use-package json-mode
   :ensure t)
 
+;; avy
+(use-package avy
+  :ensure t)
+
 (message "%s" "loaded utils.")
