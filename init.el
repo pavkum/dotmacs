@@ -34,5 +34,6 @@
 (load "~/.emacs.d/config/clojure")
 (load "~/.emacs.d/config/hydra-settings")
 (load "~/.emacs.d/config/pavan-functions")
+(load "~/.emacs.d/config/ledger-settings")
 
 ;;; init.el ends here
