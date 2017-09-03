@@ -26,16 +26,16 @@
 (use-package spacemacs-common
   :ensure spacemacs-theme
   :config
-  ;; (setq monokai-height-minus-1 1.0
-  ;;       monokai-height-plus-1 1.0
-  ;;       monokai-height-plus-2 1.0
-  ;;       monokai-height-plus-3 1.0
-  ;;       monokai-height-plus-4 1.0)
+  (setq monokai-height-minus-1 1.0
+        monokai-height-plus-1 1.0
+        monokai-height-plus-2 1.0
+        monokai-height-plus-3 1.0
+        monokai-height-plus-4 1.0)
   (setq spacemacs-theme-org-height nil
   	spacemacs-theme-org-agenda-height nil
   	spacemacs-theme-org-highlight nil)
-  (load-theme 'spacemacs-light t)
-  )
+
+  (load-theme 'spacemacs-light t))
 
 ;;(use-package all-the-icons)
 

@@ -30,7 +30,7 @@
 		   (org-agenda-time-grid nil)
 		   (org-agenda-entry-types '(:deadline))
 		   (org-deadline-warning-days 7)
-		   (org-agenda-skip-function 'pav/org-skip-subtree-if-habit)
+		   (org-agenda-skip-function 'org-agenda-skip-deadline-prewarning-if-scheduled)
 		   (org-agenda-overriding-header "Upcoming deadlines:\n")))
 	  
 	  
@@ -39,8 +39,8 @@
 	  	   (org-agenda-time-grid nil)
 	  	   (org-agenda-skip-function
 	  	    '(or (org-agenda-skip-entry-if 'notscheduled)
-	  		 (pav/org-skip-subtree-if-habit)
-	  		 (org-agenda-skip-entry-if 'notregexp "NEXT")))
+			 (pav/org-skip-subtree-if-habit)
+			 (org-agenda-skip-entry-if 'notregexp "NEXT")))
 	  	   (org-agenda-overriding-header "Work sheduled today:\n")))
 
 	  ))
