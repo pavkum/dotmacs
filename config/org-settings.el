@@ -15,7 +15,7 @@
       '(("d" "Daily agenda and all TODOs"
          ((agenda "" ((org-agenda-span 'day)
 		      (org-agenda-entry-types '(:scheduled))
-		      (org-agenda-overriding-header "Today's overview")))
+		      (org-agenda-overriding-header "Today's overview:\n")))
 
 	  (agenda ""
 		  ((org-agenda-span 'day)
@@ -23,7 +23,7 @@
 		   (org-agenda-entry-types '(:deadline))
 		   (org-deadline-warning-days 0)
 		   (org-agenda-skip-function 'pav/org-skip-subtree-if-habit)
-		   (org-agenda-overriding-header "Unfinished tasks")))
+		   (org-agenda-overriding-header "Unfinished tasks:\n")))
 
 	  (agenda ""
 		  ((org-agenda-span 'day)
@@ -31,17 +31,17 @@
 		   (org-agenda-entry-types '(:deadline))
 		   (org-deadline-warning-days 7)
 		   (org-agenda-skip-function 'pav/org-skip-subtree-if-habit)
-		   (org-agenda-overriding-header "Upcoming deadlines")))
+		   (org-agenda-overriding-header "Upcoming deadlines:\n")))
 	  
 	  
-	  ;; (agenda ""
-	  ;; 	  ((org-agenda-span 'day)
-	  ;; 	   (org-agenda-time-grid nil)
-	  ;; 	   (org-agenda-skip-function
-	  ;; 	    '(or (org-agenda-skip-entry-if 'notscheduled)
-	  ;; 		 (pav/org-skip-subtree-if-habit)
-	  ;; 		 (org-agenda-skip-entry-if 'notregexp "NEXT")))
-	  ;; 	   (org-agenda-overriding-header "Work sheduled today")))
+	  (agenda ""
+	  	  ((org-agenda-span 'day)
+	  	   (org-agenda-time-grid nil)
+	  	   (org-agenda-skip-function
+	  	    '(or (org-agenda-skip-entry-if 'notscheduled)
+	  		 (pav/org-skip-subtree-if-habit)
+	  		 (org-agenda-skip-entry-if 'notregexp "NEXT")))
+	  	   (org-agenda-overriding-header "Work sheduled today:\n")))
 
 	  ))
 	("w" "Weekly review"
@@ -55,7 +55,7 @@
 		   (org-agenda-skip-function
 		    '(or (pav/org-skip-subtree-if-habit)
 			 (org-agenda-skip-entry-if 'todo '("DONE" "CANCELLED" "COMPLETED"))))
-		   (org-agenda-overriding-header "Past and upcoming deadlines")))
+		   (org-agenda-overriding-header "Past and upcoming deadlines:\n")))
 
 	  (agenda ""
 		  ((org-agenda-span 'week)
@@ -65,7 +65,7 @@
 		   (org-agenda-skip-function
 		    '(or (pav/org-skip-subtree-if-habit)
 			 (org-agenda-skip-entry-if 'todo '("DONE" "CANCELLED" "COMPLETED"))))
-		   (org-agenda-overriding-header "Already scheduled")))
+		   (org-agenda-overriding-header "Already scheduled:\n")))
 
 	  (stuck "")
 
@@ -129,13 +129,13 @@
     ))
  '(org-todo-keywords
    '(;; general / daily chores
-     (sequence "TASK(t)" "|" "DONE(d)" "CANCELLED(c)")
+     (sequence "TASK(t)" "|" "DONE(d@)" "CANCELLED(c@)")
      ;; recurring
      (sequence "RECURRING(R)" "|" "DONE(D)")
      ;; goal sequence
-     (sequence "HABIT(H)" "|" "ACHIEVED(A)" "FAILED(F)")
+     (sequence "HABIT(H)" "|" "ACHIEVED(A)" "FAILED(F@)")
      ;; project items sequence
-     (sequence "CAPTURED(c)" "READY(r)" "NEXT(n)" "IN_PROGRESS(p)" "|" "COMPLETED(o)" "CANCELLED(a)")
+     (sequence "CAPTURED(c@/!)" "READY(r!)" "NEXT(n!)" "IN_PROGRESS(p!)" "|" "COMPLETED(o@)" "CANCELLED(a@)")
      ))
  '(org-agenda-files '("~/Dropbox/personal/org/current"))
  '(org-capture-templates

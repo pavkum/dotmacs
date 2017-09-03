@@ -20,23 +20,24 @@
 ;; set fonts
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-10"))
 
-(use-package all-the-icons)
+;;(use-package all-the-icons)
 
 ;; install monokai theme
-(use-package monokai-theme
-  :ensure t
+(use-package spacemacs-common
+  :ensure spacemacs-theme
   :config
-  (setq monokai-height-minus-1 1.0
-        monokai-height-plus-1 1.0
-        monokai-height-plus-2 1.0
-        monokai-height-plus-3 1.0
-        monokai-height-plus-4 1.0)
+  ;; (setq monokai-height-minus-1 1.0
+  ;;       monokai-height-plus-1 1.0
+  ;;       monokai-height-plus-2 1.0
+  ;;       monokai-height-plus-3 1.0
+  ;;       monokai-height-plus-4 1.0)
   (setq spacemacs-theme-org-height nil
-	spacemacs-theme-org-agenda-height nil
-	spacemacs-theme-org-highlight nil)
-  (load-theme 'monokai t))
+  	spacemacs-theme-org-agenda-height nil
+  	spacemacs-theme-org-highlight nil)
+  (load-theme 'spacemacs-light t)
+  )
 
-(use-package all-the-icons)
+;;(use-package all-the-icons)
 
 ;;(use-package powerline
 ;;  :ensure t
@@ -62,7 +63,7 @@
 	  spaceline-separator-dir-right '(right . right)
 	  spaceline-highlight-face-func 'spaceline-highlight-face-modified
 	  spaceline-responsive nil
-	  powerline-height 30)
+	  powerline-height 25)
   
 
  (spaceline-toggle-window-number-on)
@@ -78,12 +79,12 @@
 
 
 ;; apply proper color selected face of perspective
-(custom-set-faces
- '(persp-selected-face ((t (:foreground "#da8548")))))
+;; (custom-set-faces
+;;  '(persp-selected-face ((t (:foreground "#da8548")))))
 
 ;; set border between frames
-(set-face-background 'vertical-border "#3f444a")
-(set-face-foreground 'vertical-border (face-background 'vertical-border))
+;;(set-face-background 'vertical-border "#3f444a")
+;;(set-face-foreground 'vertical-border (face-background 'vertical-border))
 
 
 (use-package paredit
