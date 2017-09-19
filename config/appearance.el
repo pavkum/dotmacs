@@ -20,6 +20,9 @@
 ;; set fonts
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-10"))
 
+;; ansi term
+(set-terminal-coding-system 'utf-8-unix)
+
 ;;(use-package all-the-icons)
 
 ;; install monokai theme
@@ -62,7 +65,7 @@
 	  spaceline-separator-dir-left '(left . left)
 	  spaceline-separator-dir-right '(right . right)
 	  spaceline-highlight-face-func 'spaceline-highlight-face-modified
-	  spaceline-responsive nil
+	  spaceline-responsive t
 	  powerline-height 25)
   
 

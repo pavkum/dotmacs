@@ -15,5 +15,8 @@
   (key-chord-define-global "??" 'pav/hydra-rectangle/body)
 
   (key-chord-define-global "JJ" 'pav/hydra-jump/body)
+
+  ;; insert rupee
+  (key-chord-define-global "CC" 'pav/insert-rupee)
   
   (key-chord-define-global "::" 'ace-window))

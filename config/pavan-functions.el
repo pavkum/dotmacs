@@ -5,6 +5,11 @@
 (ace-swap-window)
 (aw-flip-window))
 
+(defun pav/capture-tags ()
+  "call tags"
+  (interactive)
+  (org-set-tags-command))
+
 (defun pav/open-agenda ()
   ""
   (interactive)
@@ -12,6 +17,11 @@
   (persp-switch "dtd")
   (org-agenda))
 
+
+(defun pav/insert-rupee ()
+  ""
+  (interactive)
+  (insert-string "₹"))
 
 (defun pav/org-skip-subtree-if-priority (priority)
   "Skip an agenda subtree if it has a priority of PRIORITY.

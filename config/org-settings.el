@@ -43,6 +43,17 @@
 			 (org-agenda-skip-entry-if 'notregexp "NEXT")))
 	  	   (org-agenda-overriding-header "Work sheduled today:\n")))
 
+	  (stuck ""
+		 ((org-agenda-skip-function '(org-agenda-skip-subtree-if 'regexp ":waiting:"))
+		  (org-agenda-overriding-header "Struck Tasks:\n")))
+
+	  (todo "NEXT"
+		((org-agenda-overriding-header "Next available tasks:\n")))
+
+	  (todo "NEXT"
+		((org-agenda-files '("~/Dropbox/personal/org/mobile/time logging.org"))
+		 (org-agenda-overriding-header "Tasks from mobile:\n")))
+	  
 	  ))
 	("w" "Weekly review"
          (
@@ -67,11 +78,15 @@
 			 (org-agenda-skip-entry-if 'todo '("DONE" "CANCELLED" "COMPLETED"))))
 		   (org-agenda-overriding-header "Already scheduled:\n")))
 
-	  (stuck "")
+	  (stuck ""
+		 ((org-agenda-skip-function '(org-agenda-skip-subtree-if 'regexp ":waiting:"))
+		  (org-agenda-overriding-header "Struck Tasks:\n")))
 
-	  (todo "READY")
+	  (todo "READY"
+		((org-agenda-overriding-header "Tasks already prioritised:\n")))
 	  
-	  (todo "CAPTURED")
+	  (todo "CAPTURED"
+		((org-agenda-overriding-header "Tasks waiting to process:\n")))
 	  ))
 	))
 
@@ -82,7 +97,7 @@
  '(org-global-properties
    '(("Effort_ALL" . "0:10 0:15 0:20 0:40 1:00 1:20 1:40 2:00 2:20 2:40 3:00")))
  '(org-stuck-projects
-   '("+@waiting|+@delegated|+@blocked" ;; tags/todo match
+   '("+@waiting" ;; tags/todo match
      nil ;; todo keywords
      nil ;; tags
      "\\<IGNORE\\>" ;; exlcude list
@@ -106,6 +121,7 @@
      ("CAPTURED" . "#8C8B74")
      ("READY" . "#F2B705")
      ("NEXT" . "#D98E04")
+     ("WAITING" . "#D48A04")
      ("IN_PROGRESS" . "orange")
      ("COMPLETED" . "#40BE90")
      ("CANCELLED" . "#42628E")))
@@ -118,9 +134,15 @@
     (:startgroup . nil)
     ("@urgent" . ?u)
     (:endgroup . nil)
+    (:startgroup . nil)
+    ("@tagged" . ?t)
+    (:endgroup . nil)
+    (:startgroup . nil)
+    ("@Week" . ?e) ("@Month". ?M) ("@NotDecided" . ?N)
+    (:endgroup . nil)
     ;; on going but other dependency
     (:startgroup . nil)
-    ("@waiting" . ?W) ("@blocked" . ?b) ("@delegated" . ?d)
+    ("@waiting" . ?a) ("@blocked" . ?b) ("@delegated" . ?d)
     (:endgroup . nil)
     ;; goals
     (:startgroup . nil)
@@ -129,13 +151,13 @@
     ))
  '(org-todo-keywords
    '(;; general / daily chores
-     (sequence "TASK(t)" "|" "DONE(d@)" "CANCELLED(c@)")
+     (sequence "TASK(t)" "WAITING(w@)" "|" "DONE(d@)" "CANCELLED(c@)")
      ;; recurring
      (sequence "RECURRING(R)" "|" "DONE(D)")
      ;; goal sequence
      (sequence "HABIT(H)" "|" "ACHIEVED(A)" "FAILED(F@)")
      ;; project items sequence
-     (sequence "CAPTURED(c@/!)" "READY(r!)" "NEXT(n!)" "IN_PROGRESS(p!)" "|" "COMPLETED(o@)" "CANCELLED(a@)")
+     (sequence "CAPTURED(c@/!)" "READY(r!)" "NEXT(n!)" "IN_PROGRESS(p!)" "WAITING(w@)"  "|" "COMPLETED(o@)" "CANCELLED(a@)")
      ))
  '(org-agenda-files '("~/Dropbox/personal/org/current"))
  '(org-capture-templates
@@ -151,12 +173,23 @@
 	;; "* %<%H:%M> %^{Logging}p")
 	;;("L" "Logging for someday" entry (file+datetree+prompt "~/Dropbox/personal/logging.org")
 	;; "* %<%H:%M> %^{Logging}p")
+	("P"
+	 "Work Project creation"
+	 entry
+	 (file+headline "~/Dropbox/personal/org/current/work.org" "Inbox")
+	 "* CAPTURED %^{Task} [%] %^{TProject}p %^{TRelease}p %^{TType}p \n :PROPERTIES:\n :JIRA: %^{Jira|NA} \n :END:"
+	 :empty-lines 1)
 	("w"
 	 "Work task creation"
 	 entry
-	 (file "~/Dropbox/personal/org/current/work.org")
-	 "* CAPTURED %^{Task} %^{TProject}p %^{TRelease}p %^{TType}p %^{TDeadline}p  \n :PROPERTIES:\n :JIRA: %^{Jira|NA} \n :SCENARIO: %^{scenario|NA} \n :COMMENTS: %^{comment|NA} \n :END:"
-	 :empty-lines 1))))
+	 (file+headline "~/Dropbox/personal/org/current/work.org" "Tasks")
+	 "* TASK %^{Task} %^{TProject}p %^{TRelease}p %^{TType}p %^G  \n"
+	 :empty-lines 1)
+	)))
+
+;;(add-hook 'org-capture-mode-hook 'pav/capture-tags)
+
+
 
 ;;; store link
 (global-set-key (kbd "C-c i") 'org-store-link)

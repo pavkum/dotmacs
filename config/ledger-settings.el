@@ -1,2 +1,4 @@
 (use-package ledger-mode
-  :ensure t)
+  :ensure t
+  :config
+  (setq ledger-reconcile-default-commodity "₹"))
