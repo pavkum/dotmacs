@@ -38,7 +38,7 @@
   	spacemacs-theme-org-agenda-height nil
   	spacemacs-theme-org-highlight nil)
 
-  (load-theme 'spacemacs-light t))
+  (load-theme 'spacemacs-dark t))
 
 ;;(use-package all-the-icons)
 
