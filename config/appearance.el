@@ -62,11 +62,11 @@
 
    
   (require 'spaceline-config)
-  (setq   powerline-default-separator 'wave
+  (setq   powerline-default-separator 'bar
 	  spaceline-workspace-numbers-unicode t
 	  spaceline-separator-dir-left '(left . left)
 	  spaceline-separator-dir-right '(right . right)
-	  spaceline-highlight-face-func 'spaceline-highlight-face-modified
+	  ;;spaceline-highlight-face-func 'spaceline-highlight-face-modified
 	  spaceline-responsive t
 	  powerline-height 25)
   
@@ -76,34 +76,61 @@
   ;; A single form whose value is the value of the segment.
   ;; It may return a string, an image or a list of such.
   (when (bound-and-true-p god-local-mode)
-    "<G>")
-  
+    "<G>"))
 
-  ;; Additional keyword properties go here
-  :fallback "<I>")
+(defun spaceline-custom-theme (&rest additional-segments)
+  "Install the mode-line used by Spacemacs with my custom segment placement.
 
-(defface spaceline-godmode-face
-  `((t (:background "DarkGoldenrod2"
-        :foreground "#3E3D31"
-        :inherit 'mode-line)))
-  "Default highlight face for spaceline."
-  :group 'spaceline)
+ADDITIONAL-SEGMENTS are inserted on the right, between `global' and
+`buffer-position'."
+  (interactive)
+  (apply 'spaceline--custom-theme
+     '((persp-name
+        workspace-number
+        window-number)
+       :fallback evil-state
+       :separator "|"
+       :face highlight-face)
+     '(
+       buffer-modified   ;; asterisk showings modified buffer
+       buffer-size
+       buffer-id         ;; buffer name
+       remote-host
+       godmode
+       )
+     additional-segments))
 
-(defface spaceline-normal-face
-  `((t (:background "chartreuse3"
-        :foreground "#3E3D31"
-        :inherit 'mode-line)))
-  "Default highlight face for spaceline."
-  :group 'spaceline)
 
-(defun spaceline-godmode-highlight-face ()
-  ""
-  (when (bound-and-true-p god-local-mode)
-    (t 'spaceline-godmode-face)
-    (t 'spaceline-normal-face)
-    ))
+(defun spaceline--custom-theme (left second-left &rest additional-segments)
+  "Convenience function for the spacemacs and Emacs themes.
+LEFT SECOND-LEFT>>  <<ADDITIONAL-SEGMENTS are added in that order."
+  (spaceline-install `(,left
+            anzu
+            auto-compile
+            ,second-left
+            ((buffer-position
+              hud
+              point-position
+              line-column)
+             :separator " | ")
+	    ;;godmode
+            major-mode
+            (process :when active)
+            ((flycheck-error flycheck-warning flycheck-info)
+             :when active)
+            (minor-modes :when active)
+            (version-control :when active)
+            (org-clock :when active)
+            )
 
- ;;(setq spaceline-highlight-face-func 'spaceline-godmode-highlight-face)
+    `(which-function
+      persp-name
+      (global :when active)
+      ,@additional-segments
+      ))
+  (setq-default mode-line-format '("%e" (:eval (spaceline-ml-main)))))
+
+ (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified)
  (spaceline-toggle-window-number-on)
  (spaceline-toggle-buffer-modified-on)
 (spaceline-toggle-hud-off)
@@ -111,7 +138,7 @@
  (spaceline-toggle-major-mode-on)
  (spaceline-toggle-minor-modes-off)
  (spaceline-toggle-auto-compile-on)
- (spaceline-emacs-theme)
+ (spaceline-custom-theme)
 
  (require 'helm)
  (spaceline-helm-mode))
