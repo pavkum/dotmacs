@@ -1,3 +1,15 @@
+(defun pav/update-cursor ()
+  (if (bound-and-true-p god-local-mode)
+      (setq cursor-type 'box)
+    (setq cursor-type 'bar)
+      ;;(set-face-attribute 'spaceline-highlight-face nil :foreground "black")
+      ;;(set-face-attribute 'spaceline-highlight-face nil :foreground "pink")
+  )
+)
+
+(add-hook 'god-mode-enabled-hook 'pav/update-cursor)
+(add-hook 'god-mode-disabled-hook 'pav/update-cursor)
+
 (defun pav/swap-windows ()
 ""
 (interactive)

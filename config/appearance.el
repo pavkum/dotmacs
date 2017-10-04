@@ -59,8 +59,10 @@
 (use-package spaceline
   :ensure t
   :config
+
+   
   (require 'spaceline-config)
-  (setq   powerline-default-separator 'slant
+  (setq   powerline-default-separator 'wave
 	  spaceline-workspace-numbers-unicode t
 	  spaceline-separator-dir-left '(left . left)
 	  spaceline-separator-dir-right '(right . right)
@@ -69,9 +71,43 @@
 	  powerline-height 25)
   
 
+(spaceline-define-segment godmode
+  "Docstring"
+  ;; A single form whose value is the value of the segment.
+  ;; It may return a string, an image or a list of such.
+  (when (bound-and-true-p god-local-mode)
+    "<G>")
+  
+
+  ;; Additional keyword properties go here
+  :fallback "<I>")
+
+(defface spaceline-godmode-face
+  `((t (:background "DarkGoldenrod2"
+        :foreground "#3E3D31"
+        :inherit 'mode-line)))
+  "Default highlight face for spaceline."
+  :group 'spaceline)
+
+(defface spaceline-normal-face
+  `((t (:background "chartreuse3"
+        :foreground "#3E3D31"
+        :inherit 'mode-line)))
+  "Default highlight face for spaceline."
+  :group 'spaceline)
+
+(defun spaceline-godmode-highlight-face ()
+  ""
+  (when (bound-and-true-p god-local-mode)
+    (t 'spaceline-godmode-face)
+    (t 'spaceline-normal-face)
+    ))
+
+ ;;(setq spaceline-highlight-face-func 'spaceline-godmode-highlight-face)
  (spaceline-toggle-window-number-on)
  (spaceline-toggle-buffer-modified-on)
- (spaceline-toggle-hud-off)
+(spaceline-toggle-hud-off)
+;;(spaceline-toggle-godmode-on)
  (spaceline-toggle-major-mode-on)
  (spaceline-toggle-minor-modes-off)
  (spaceline-toggle-auto-compile-on)
@@ -80,6 +116,21 @@
  (require 'helm)
  (spaceline-helm-mode))
 
+
+;; (require 'cl)
+;; (require 'powerline)
+;; (setq powerline-text-scale-factor 2)
+;; ;;(setq powerline-default-separator 'bar)
+;; (setq powerline-arrow-shape 'curve)
+;; (setq powerline-default-separator-dir '(right . left))
+;; ;; These two lines you really need.
+;; (setq sml/theme 'powerline)
+;; (sml/setup)
+
+;; (set-face-attribute 'mode-line nil
+;;                     :foreground "Black"
+;;                     :background "DarkOrange"
+;;                     :box nil)
 
 ;; apply proper color selected face of perspective
 ;; (custom-set-faces

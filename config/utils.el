@@ -54,4 +54,13 @@
 (use-package avy
   :ensure t)
 
+;; god mode
+(use-package god-mode
+  :ensure t
+  :config
+  (god-mode-all)
+  ;;(global-set-key (kbd "M-x g") 'god-mode-all)
+  (define-key god-local-mode-map (kbd "i") 'god-local-mode) 
+  )
+
 (message "%s" "loaded utils.")
