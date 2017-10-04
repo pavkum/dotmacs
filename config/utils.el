@@ -58,6 +58,8 @@
 (use-package god-mode
   :ensure t
   :config
+  (setq god-exempt-major-modes nil)
+  (setq god-exempt-predicates nil)
   (god-mode-all)
   ;;(global-set-key (kbd "M-x g") 'god-mode-all)
   (define-key god-local-mode-map (kbd "i") 'god-local-mode) 
