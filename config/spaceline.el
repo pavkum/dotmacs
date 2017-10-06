@@ -66,4 +66,3 @@
 
  (require 'helm)
  (spaceline-helm-mode)
-
