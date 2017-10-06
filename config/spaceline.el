@@ -47,6 +47,9 @@
     `((org-clock
        :when active
        :priority 1)
+      (global
+       :when active
+       :priority 0)
       (version-control
        :when active
        :priority 3)
