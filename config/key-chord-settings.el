@@ -19,6 +19,6 @@
   ;; insert rupee
   (key-chord-define-global "CC" 'pav/insert-rupee)
 
-  (key-chord-define-global "GG" 'god-mode-all)
+  (key-chord-define-global "GG" 'god-local-mode)
   
   (key-chord-define-global "::" 'ace-window))
