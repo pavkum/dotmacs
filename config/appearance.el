@@ -20,8 +20,12 @@
 ;; set fonts
 (add-to-list 'default-frame-alist '(font . "DejaVu Sans Mono-10"))
 
-;; ansi term
+;; utf-8
 (set-terminal-coding-system 'utf-8-unix)
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-language-environment 'utf-8)
+(set-selection-coding-system 'utf-8)
 
 ;;(use-package all-the-icons)
 

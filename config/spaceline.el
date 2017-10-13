@@ -6,13 +6,19 @@
   (require 'spaceline-config)
   (require 'spaceline)
 
-  (setq   powerline-default-separator 'bar
-	  spaceline-workspace-numbers-unicode t
-	  spaceline-separator-dir-left '(left . left)
-	  spaceline-separator-dir-right '(right . right)
-	  spaceline-highlight-face-func 'spaceline-highlight-face-modified
-	  spaceline-responsive t
-	  powerline-height 25)
+  (if window-system
+    (setq
+     powerline-default-separator 'bar
+     powerline-height 25)
+    (setq
+     powerline-default-separator 'utf-8
+     powerline-utf-8-separator-left #xe0b8
+     powerline-utf-8-separator-right #xe0ba
+     ))
+
+  (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified
+	spaceline-responsive t)
+	
   
 (spaceline-define-segment godmode
   "Docstring"
