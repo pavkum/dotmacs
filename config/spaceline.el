@@ -12,8 +12,8 @@
      powerline-height 25)
     (setq
      powerline-default-separator 'utf-8
-     powerline-utf-8-separator-left #xe0b0
-     powerline-utf-8-separator-right #xe0b2
+     powerline-utf-8-separator-left #xe0b8
+     powerline-utf-8-separator-right #xe0ba
      ))
 
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified
