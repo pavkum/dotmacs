@@ -64,7 +64,12 @@
   ;;(global-set-key (kbd "M-x g") 'god-mode-all)
   (define-key god-local-mode-map (kbd ".") 'repeat)
   (define-key god-local-mode-map (kbd "i") 'god-local-mode)
-
+  (define-key god-local-mode-map (kbd "C-' C-a") 'avy-goto-char)
+  (define-key god-local-mode-map (kbd "C-' C-s") 'avy-goto-char-2)
+  (define-key god-local-mode-map (kbd "C-' C-d") 'avy-goto-word-0)
+  (define-key god-local-mode-map (kbd "C-' C-f") 'avy-goto-word-1)
+  (define-key god-local-mode-map (kbd "M-g g") 'avy-goto-line)
+  
   (require 'god-mode-isearch)
   (define-key isearch-mode-map (kbd "<escape>") 'god-mode-isearch-activate)
   (define-key god-mode-isearch-map (kbd "<escape>") 'god-mode-isearch-disable)
