@@ -55,24 +55,72 @@
   :ensure t)
 
 ;; god mode
-(use-package god-mode
+;; (use-package god-mode
+;;   :ensure t
+;;   :config
+;;   (setq god-exempt-major-modes nil)
+;;   (setq god-exempt-predicates nil)
+;;   (god-mode)
+;;   ;;(global-set-key (kbd "M-x g") 'god-mode-all)
+;;   (define-key god-local-mode-map (kbd ".") 'repeat)
+;;   (define-key god-local-mode-map (kbd "i") 'god-local-mode)
+;;   (define-key god-local-mode-map (kbd "C-' C-a") 'avy-goto-char)
+;;   (define-key god-local-mode-map (kbd "C-' C-s") 'avy-goto-char-2)
+;;   (define-key god-local-mode-map (kbd "C-' C-d") 'avy-goto-word-0)
+;;   (define-key god-local-mode-map (kbd "C-' C-f") 'avy-goto-word-1)
+;;   (define-key god-local-mode-map (kbd "M-g g") 'avy-goto-line)
+  
+;;   (require 'god-mode-isearch)
+;;   (define-key isearch-mode-map (kbd "<escape>") 'god-mode-isearch-activate)
+;;   (define-key god-mode-isearch-map (kbd "<escape>") 'god-mode-isearch-disable)
+;;   )
+
+(use-package evil
   :ensure t
   :config
-  (setq god-exempt-major-modes nil)
-  (setq god-exempt-predicates nil)
-  (god-mode)
-  ;;(global-set-key (kbd "M-x g") 'god-mode-all)
-  (define-key god-local-mode-map (kbd ".") 'repeat)
-  (define-key god-local-mode-map (kbd "i") 'god-local-mode)
-  (define-key god-local-mode-map (kbd "C-' C-a") 'avy-goto-char)
-  (define-key god-local-mode-map (kbd "C-' C-s") 'avy-goto-char-2)
-  (define-key god-local-mode-map (kbd "C-' C-d") 'avy-goto-word-0)
-  (define-key god-local-mode-map (kbd "C-' C-f") 'avy-goto-word-1)
-  (define-key god-local-mode-map (kbd "M-g g") 'avy-goto-line)
-  
-  (require 'god-mode-isearch)
-  (define-key isearch-mode-map (kbd "<escape>") 'god-mode-isearch-activate)
-  (define-key god-mode-isearch-map (kbd "<escape>") 'god-mode-isearch-disable)
-  )
-
+    (evil-mode 1))
 (message "%s" "loaded utils.")
+
+(use-package general
+  :ensure t
+  :config
+  (setq general-default-keymaps 'evil-normal-state-map)
+  (setq my-leader "SPC")
+  ;; file commands
+  (general-define-key
+   :prefix my-leader
+   "ff" 'helm-find-files
+   "fs" 'save-buffer
+   "fr" 'rename-file
+   "fd" 'delete-file)
+
+  ;; buffer commands
+  (general-define-key
+   :prefix my-leader 
+   "bb" 'switch-to-buffer
+   "bh" 'helm-mini
+   "bk" 'kill-this-buffer
+   "bK" 'kill-buffer
+   "br" 'rename-buffer)
+
+  ;; projectile commands
+  (general-define-key
+   :prefix my-leader
+   "ps" 'projectile-switch-project
+   "pf" 'projectile-find-file
+   "pb" 'projectile-switch-to-buffer
+   "pg" 'projectile-grep)
+
+  ;; avy settings
+  (general-define-key
+   :prefix my-leader
+   "jco" 'avy-goto-char
+   "jct" 'avy-goto-char-2
+   "jwz" 'avy-goto-word-0
+   "jwo" 'avy-goto-word-1)
+
+  ;; magit status
+  (general-define-key
+   :prefix my-leader
+   "gs" 'magit-status)
+ )

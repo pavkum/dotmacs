@@ -16,7 +16,7 @@
      powerline-utf-8-separator-right #xe0ba
      ))
 
-  (setq spaceline-highlight-face-func 'spaceline-highlight-face-modified
+  (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state
 	spaceline-responsive t)
 	
   
@@ -36,14 +36,11 @@
     "My theme"
   (spaceline-install
     `(anzu
-      (godmode
-       :face highlight-face
-       :priority 0)
-      '((point-position
-	line-column)
-	:separator " | "
-	:priority 4)
-      '((buffer-id         ;; buffer name
+      (line-column  
+	:priority 0
+	:face highlight-face)
+      '((buffer-modified
+	 buffer-id         ;; buffer name
 	 remote-host)
 	:priority 0)
       major-mode
