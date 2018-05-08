@@ -144,8 +144,7 @@ _h_   _l_     _y_ank        _t_ype       _e_xchange-point          /,`.-'`'   ..
   ("C-g" nil))      ;; ok
 
 
-(defhydra pav/hydra-jump (:color teal
-			    :columns 4)
+(defhydra pav/hydra-jump (:color teal)
   "Avy"
   ("a"   avy-goto-char                       "Avy char 1")
   ("s"   avy-goto-char-2                     "Avy char 2")
@@ -155,3 +154,56 @@ _h_   _l_     _y_ank        _t_ype       _e_xchange-point          /,`.-'`'   ..
   ("z"   helm-occur                          "Helm occur")
 
   ("C-g"   nil "Cancel" :color blue))
+
+(defun pav/insert-and-indent (value)
+  "inserts in a newline and indents according to mode"
+  (interactive)
+  (newline-and-indent)
+  (insert value)
+  (indent-according-to-mode))
+
+(defun pav/open-js-ts-comment ()
+  "opens comment block"
+  (pav/insert-and-indent "/*"))
+
+(defun pav/close-js-ts-comment ()
+  "closes comment block"
+  (pav/insert-and-indent "*/"))
+
+(defun pav/insert-js-ts-jsdoc-value (value)
+  "inserts js-doc parameter value"
+  (pav/insert-and-indent (concat "* " value)))
+
+
+(defun pav/goto-first-line-of-comment-after-comment (&optional line)
+  "Goes to first line of comment block"
+  (interactive)
+  (unless line (setq line 2))
+  (forward-line line)
+  (end-of-line)
+  (evil-append line))
+
+(defun pav/js-ts-parameter ()
+         "Configure multi-line comments."
+	 (interactive)
+	 (forward-line -1)
+	 (save-excursion
+	 (pav/open-js-ts-comment)
+	 (pav/insert-js-ts-jsdoc-value "@parameter")
+	 (pav/insert-js-ts-jsdoc-value "@name $name")
+	 (pav/close-js-ts-comment))
+	 (pav/goto-first-line-of-comment-after-comment 3))
+
+(defun pav/js-ts-function ()
+  "Inserts function comment"
+  (interactive)
+  (forward-line -1)
+  (save-excursion
+  (pav/open-js-ts-comment)
+  (pav/insert-js-ts-jsdoc-value "@function")
+  (pav/insert-js-ts-jsdoc-value "@name $name")
+  (pav/insert-js-ts-jsdoc-value "@param {$type} $name")
+  (pav/insert-js-ts-jsdoc-value "@param {$type} $name")
+  (pav/insert-js-ts-jsdoc-value "@returns {$type} $description")
+  (pav/close-js-ts-comment))
+  (pav/goto-first-line-of-comment-after-comment 3))

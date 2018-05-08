@@ -101,6 +101,8 @@
    "bh" 'helm-mini
    "bk" 'kill-this-buffer
    "bK" 'kill-buffer
+   "bp" 'previous-buffer
+   "bn" 'next-buffer
    "br" 'rename-buffer)
 
   ;; projectile commands
@@ -123,4 +125,13 @@
   (general-define-key
    :prefix my-leader
    "gs" 'magit-status)
+
+  ;; comments
+  (general-define-key
+   :prefix my-leader
+   "ci" 'pav/js-ts-block-comments
+   "cF" 'js-doc-file-doc-lines
+   "cf" 'pav/js-ts-function
+   "ct" 'pav/js-ts-parameter
+   )
  )
