@@ -53,6 +53,9 @@
       (global
        :when active
        :priority 0)
+      (projectile-root
+       :when active
+       :priority 3)
       (version-control
        :when active
        :priority 3)
